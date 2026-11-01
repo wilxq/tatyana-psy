@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F9F6F0">
+  <meta name="description" content="Запись на онлайн-консультацию к психологу Татьяне Игошиной.">
+  <title>Записаться на консультацию — Татьяна Игошина</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="index.html#home" aria-label="Татьяна Игошина — на главную">Татьяна Игошина</a>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Основная навигация">
+        <a href="index.html#about">О себе</a>
+        <a href="index.html#services">Услуги</a>
+        <a href="index.html#specialization">Специализация</a>
+        <a href="index.html#education">Образование</a>
+        <a href="index.html#contacts">Контакты</a>
+      </nav>
+      <a class="button button-header" href="#booking">Записаться</a>
+    </div>
+  </header>
+
+  <main class="booking-page">
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <div class="booking-content reveal">
+          <p class="eyebrow">Первый шаг</p>
+          <h1>Записаться на консультацию</h1>
+          <p class="booking-description">Татьяна свяжется с вами для подтверждения записи. Стоимость онлайн-консультации — 3000 ₽</p>
+          <form class="contact-form booking-form" id="contact-form">
+            <label for="contact-name">Имя</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required>
+            <label for="contact-phone">Телефон</label>
+            <input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" aria-describedby="phone-hint" required>
+            <span class="form-hint" id="phone-hint">Укажите номер для связи</span>
+            <button class="button form-submit" type="submit">Отправить <span aria-hidden="true">↗</span></button>
+            <p class="form-disclaimer">Демонстрационная форма: отправка пока не подключена.</p>
+          </form>
+          <div class="booking-contacts">
+            <a href="https://t.me/tatyana_psy" target="_blank" rel="noopener noreferrer">Telegram <span>@tatyana_psy</span> <span aria-hidden="true">↗</span></a>
+            <a href="tel:+79991234567">Телефон <span>+7 (999) 123-45-67</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="confirmation-modal" id="confirmation-modal" aria-labelledby="confirmation-message">
+    <div class="confirmation-content">
+      <svg class="success-check" viewBox="0 0 120 120" role="img" aria-label="Успешная запись">
+        <circle class="success-check-circle" cx="60" cy="60" r="48"></circle>
+        <path class="success-check-mark" d="m38 61 14 14 31-32"></path>
+      </svg>
+      <p class="confirmation-message" id="confirmation-message">Спасибо! Я свяжусь с вами в ближайшее время для подтверждения записи.</p>
+      <button class="button confirmation-close" type="button">Закрыть</button>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="wordmark footer-wordmark" href="index.html#home">Татьяна Игошина</a>
+      <p>© 2026 Татьяна Игошина</p>
+      <a class="footer-social" href="https://t.me/tatyana_psy" target="_blank" rel="noopener noreferrer">Telegram <span aria-hidden="true">↗</span></a>
+    </div>
+  </footer>
+</body>
+</html>
