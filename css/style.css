@@ -417,7 +417,7 @@ p {
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
   object-fit: cover;
-  object-position: center;
+  object-position: center 0%;
 }
 
 .about-copy {
@@ -485,6 +485,12 @@ p {
   background: var(--color-surface);
   box-shadow: var(--shadow-soft);
   transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.service-card:only-child {
+  grid-column: 1 / -1;
+  width: min(100%, 720px);
+  justify-self: center;
 }
 
 .service-card:hover {
@@ -710,10 +716,6 @@ p {
 
 .diploma-slider[data-active-slide="4"] .diploma-track {
   transform: translateX(-400%);
-}
-
-.diploma-slider[data-active-slide="5"] .diploma-track {
-  transform: translateX(-500%);
 }
 
 .diploma-slide {
