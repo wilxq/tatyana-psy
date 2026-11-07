@@ -2,6 +2,7 @@ const siteHeader = document.querySelector("#site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector("#primary-nav");
 const contactForm = document.querySelector("#contact-form");
+const nameInput = document.querySelector("#contact-name");
 const phoneInput = document.querySelector("#contact-phone");
 const confirmationModal = document.querySelector("#confirmation-modal");
 const confirmationClose = document.querySelector(".confirmation-close");
@@ -89,13 +90,13 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
 }
 
-if (phoneInput && contactForm && confirmationModal) {
+if (nameInput && phoneInput && contactForm && confirmationModal) {
   phoneInput.addEventListener("input", () => {
     phoneInput.value = formatPhone(phoneInput.value);
     updatePhoneValidity();
   });
 
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     updatePhoneValidity();
 
@@ -103,9 +104,36 @@ if (phoneInput && contactForm && confirmationModal) {
       return;
     }
 
-    confirmationModal.showModal();
-    contactForm.reset();
-    phoneInput.setCustomValidity("");
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.replace(/\D/g, "");
+
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+
+    try {
+      const response = await fetch("https://tatyana-form.florenze36.workers.dev", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone })
+      });
+      const data = await response.json();
+
+      if (data.ok) {
+        confirmationModal.showModal();
+        contactForm.reset();
+        phoneInput.setCustomValidity("");
+      } else {
+        alert("Ошибка отправки. Попробуйте позже.");
+      }
+    } catch (error) {
+      alert("Ошибка сети. Попробуйте позже.");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+    }
   });
 
   if (confirmationClose) {
