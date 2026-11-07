@@ -899,6 +899,86 @@ p {
   font-size: 10px;
 }
 
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.form-consent input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.form-consent label {
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+}
+
+.form-consent label::before,
+.form-consent label::after {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  content: "";
+}
+
+.form-consent label::before {
+  border: 1px solid var(--color-accent-light);
+  background: var(--color-surface);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.form-consent label::after {
+  top: 3px;
+  left: 5px;
+  width: 6px;
+  height: 10px;
+  border-right: 2px solid var(--color-surface);
+  border-bottom: 2px solid var(--color-surface);
+  border-radius: 0;
+  opacity: 0;
+  transform: rotate(45deg) scale(0.75);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.form-consent input:checked + label::before {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.form-consent input:checked + label::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+.form-consent input:focus-visible + label::before {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.form-consent label {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.form-consent a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .form-submit {
   width: 100%;
   cursor: pointer;
@@ -951,14 +1031,14 @@ p {
   stroke-linejoin: round;
 }
 
-.success-check-circle {
+.confirmation-modal[open] .success-check-circle {
   stroke-width: 3;
   stroke-dasharray: 302;
   stroke-dashoffset: 302;
   animation: draw-success-circle 900ms ease forwards;
 }
 
-.success-check-mark {
+.confirmation-modal[open] .success-check-mark {
   stroke-width: 4;
   stroke-dasharray: 68;
   stroke-dashoffset: 68;
@@ -1063,6 +1143,13 @@ p {
 .footer-inner p {
   margin: 0;
   font-size: 10px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 18px;
 }
 
 .reveal {
